@@ -13,7 +13,11 @@
 		$_SESSION[ 'User.type_id' ] = $user->type_id;
 		$_SESSION[ 'MESSAGE' ] = 'Login successful.';		
 		$_SESSION[ 'MESSAGE_TYPE' ] = 'success';
-		header( "Location: " . ROOT_URL . "/?page=lessons" );
+		if( $user->type_id == 1 ) {
+			header( "Location: " . ROOT_URL . "/?page=admin" );
+		} else {
+			header( "Location: " . ROOT_URL . "/?page=lessons" );
+		}
 	} else {
 		$_SESSION[ 'MESSAGE' ] = 'Login failed.';		
 		$_SESSION[ 'MESSAGE_TYPE' ] = 'danger';
