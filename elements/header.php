@@ -29,9 +29,22 @@
 					    <!-- Collect the nav links, forms, and other content for toggling -->
 					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					      <ul class="nav navbar-nav">
-					        <li class="active"><a href="./">Home <span class="sr-only">(current)</span></a></li>
-					        <li><a href="./?page=lessons">Lessons</a></li>
-					        <li><a href="./?page=lessons">Contact Us</a></li>
+					      	<?php if( isset( $_SESSION[ 'User.id' ] ) && $_SESSION[ 'User.id' ] ) : ?>
+					      		<?php if( $_SESSION[ 'User.type_id' ] == 1 ) : ?>
+					      			<li><a href="./">Home</a></li>
+					        		<li><a href="./?page=feedbacks">Feedbacks</a></li>
+					        		<li><a href="./?page=lessons">Lessons</a></li>
+					        		<li><a href="./?page=accounts">Accounts</a></li>
+					        		<li><a href="./?page=forum">Forum</a></li>					        	
+					      		<?php else : ?>
+					      			<li><a href="./">Home</a></li>					        		
+					        		<li><a href="./?page=lessons">Lessons</a></li>					        		
+					        		<li><a href="./?page=forum">Forum</a></li>
+				      			<?php endif; ?>
+					      	<?php else : ?>
+					      		<li><a href="./?page=lessons">Home</a></li>
+					        	<li><a href="./?page=lessons">Forum</a></li>
+					      	<?php endif; ?>					      	
 					      </ul>					     
 					      <ul class="nav navbar-nav navbar-right">
 					      	<?php if( isset( $_SESSION[ 'User.id' ] ) ) : ?>
